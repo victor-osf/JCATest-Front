@@ -1,9 +1,10 @@
 import React from 'react';
+import logojca from './logojca.svg'
 
 const NewComponent = () =>(    
         <div className="container">
           <div className="py-5 text-center">
-            <img className="d-block mx-auto mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width={72} height={72} />
+            <img className="d-block mx-auto mb-4" src={logojca} alt="" width={300} height={150} />
             <h2>Checkout form</h2>
             <p className="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
           </div>
