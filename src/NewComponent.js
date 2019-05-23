@@ -20,7 +20,7 @@ const NewComponent = () =>(
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <div className="custom-control custom-radio">
                       <h6>
-                        <input id="cometa" name="empresas" type="radio" className="custom-control-input" defaultChecked  />
+                        <input id="cometa" name="baseUrl" type="radio" className="custom-control-input" defaultChecked  />
                         <label className="custom-control-label" htmlFor="cometa">Cometa</label>
                       </h6>
                     </div>
@@ -28,7 +28,7 @@ const NewComponent = () =>(
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <div className="custom-control custom-radio">
                       <h6>
-                        <input id="rapido" name="empresas" type="radio" className="custom-control-input"  />
+                        <input id="rapido" name="baseUrl" type="radio" className="custom-control-input"  />
                         <label className="custom-control-label" htmlFor="rapido">Rápido Ribeirão</label>
                       </h6>
                     </div>
@@ -36,7 +36,7 @@ const NewComponent = () =>(
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <div className="custom-control custom-radio">
                       <h6>
-                        <input id="catarinense" name="empresas" type="radio" className="custom-control-input"  />
+                        <input id="catarinense" name="baseUrl" type="radio" className="custom-control-input"  />
                         <label className="custom-control-label" htmlFor="catarinense">Catarinense</label>
                       </h6>
                     </div>
@@ -44,7 +44,7 @@ const NewComponent = () =>(
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <div className="custom-control custom-radio">
                       <h6>
-                        <input id="1001" name="empresas" type="radio" className="custom-control-input"  />
+                        <input id="1001" name="baseUrl" type="radio" className="custom-control-input"  />
                         <label className="custom-control-label" htmlFor="1001">1001</label>
                       </h6>
                     </div>
@@ -52,7 +52,7 @@ const NewComponent = () =>(
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <div className="custom-control custom-radio">
                       <h6>
-                        <input id="expresso" name="empresas" type="radio" className="custom-control-input"  />
+                        <input id="expresso" name="baseUrl" type="radio" className="custom-control-input"  />
                         <label className="custom-control-label" htmlFor="expresso">Expresso do Sul</label>
                       </h6>
                     </div>
