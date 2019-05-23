@@ -1,210 +1,276 @@
 import React from 'react';
+import logojca from './logojca.svg'
 
 const NewComponent = () =>(    
         <div className="container">
           <div className="py-5 text-center">
-            <img className="d-block mx-auto mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width={72} height={72} />
-            <h2>Checkout form</h2>
-            <p className="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+            <img className="d-block mx-auto mb-4" src={logojca} alt="" width={300} height={150} />
+            <h2>Formulário de Parâmetros</h2>
+            <p className="lead">Formulário com parâmetros para automatização dos testes nos sites do grupo JCA.
+                                  Para utilizar os parâmetros preenchidos no formulário, pressione o botão "Testar",
+                                  ou altere os campos desejados, pressione o botão "Salvar" e em seguida "Testar".
+            </p>
           </div>
           <div className="row">
             <div className="col-md-4 order-md-2 mb-4">
               <h4 className="d-flex justify-content-between align-items-center mb-3">
-                <span className="text-muted">Your cart</span>
-                <span className="badge badge-secondary badge-pill">3</span>
+                <span className="text-muted">Selecione a empresa</span>
               </h4>
               <ul className="list-group mb-3">
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 className="my-0">Product name</h6>
-                    <small className="text-muted">Brief description</small>
-                  </div>
-                  <span className="text-muted">$12</span>
+                    <div className="custom-control custom-radio">
+                      <h6>
+                        <input id="cometa" name="empresas" type="radio" className="custom-control-input" defaultChecked  />
+                        <label className="custom-control-label" htmlFor="cometa">Cometa</label>
+                      </h6>
+                    </div>
                 </li>
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 className="my-0">Second product</h6>
-                    <small className="text-muted">Brief description</small>
-                  </div>
-                  <span className="text-muted">$8</span>
+                    <div className="custom-control custom-radio">
+                      <h6>
+                        <input id="rapido" name="empresas" type="radio" className="custom-control-input"  />
+                        <label className="custom-control-label" htmlFor="rapido">Rápido Ribeirão</label>
+                      </h6>
+                    </div>
                 </li>
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                    <h6 className="my-0">Third item</h6>
-                    <small className="text-muted">Brief description</small>
+                    <div className="custom-control custom-radio">
+                      <h6>
+                        <input id="catarinense" name="empresas" type="radio" className="custom-control-input"  />
+                        <label className="custom-control-label" htmlFor="catarinense">Catarinense</label>
+                      </h6>
+                    </div>
+                </li>
+                <li className="list-group-item d-flex justify-content-between lh-condensed">
+                    <div className="custom-control custom-radio">
+                      <h6>
+                        <input id="1001" name="empresas" type="radio" className="custom-control-input"  />
+                        <label className="custom-control-label" htmlFor="1001">1001</label>
+                      </h6>
+                    </div>
+                </li>
+                <li className="list-group-item d-flex justify-content-between lh-condensed">
+                    <div className="custom-control custom-radio">
+                      <h6>
+                        <input id="expresso" name="empresas" type="radio" className="custom-control-input"  />
+                        <label className="custom-control-label" htmlFor="expresso">Expresso do Sul</label>
+                      </h6>
+                    </div>
+                </li>
+                <div className="container">
+                  <div className="row"> 
+                    <div className="col">     
+                      <button className="btn btn-primary btn-block" type="submit">Salvar</button>
+                    </div>
+                    <div className="col"> 
+                      <button className="btn btn-success btn-block" type="submit">Testar</button>
+                    </div>
                   </div>
-                  <span className="text-muted">$5</span>
-                </li>
-                <li className="list-group-item d-flex justify-content-between bg-light">
-                  <div className="text-success">
-                    <h6 className="my-0">Promo code</h6>
-                    <small>EXAMPLECODE</small>
-                  </div>
-                  <span className="text-success">-$5</span>
-                </li>
-                <li className="list-group-item d-flex justify-content-between">
-                  <span>Total (USD)</span>
-                  <strong>$20</strong>
-                </li>
+                </div>                  
               </ul>
-              <form className="card p-2">
-                <div className="input-group">
-                  <input type="text" className="form-control" placeholder="Promo code" />
-                  <div className="input-group-append">
-                    <button type="submit" className="btn btn-secondary">Redeem</button>
-                  </div>
-                </div>
-              </form>
             </div>
-            <div className="col-md-8 order-md-1">
-              <h4 className="mb-3">Billing address</h4>
+
+
+            <div className="col-md-8 order-md-1">              
               <form className="needs-validation" noValidate>
+              <h4 className="mb-3">Dados de Login</h4>
                 <div className="row">
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="firstName">First name</label>
-                    <input type="text" className="form-control" id="firstName" placeholder defaultValue required />
-                    <div className="invalid-feedback">
-                      Valid first name is required.
-                    </div>
+                    <label htmlFor="userCPF">CPF do usuário</label>
+                    <input type="text" className="form-control" id="userCPF"  />                    
                   </div>
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="lastName">Last name</label>
-                    <input type="text" className="form-control" id="lastName" placeholder defaultValue required />
-                    <div className="invalid-feedback">
-                      Valid last name is required.
-                    </div>
+                    <label htmlFor="passCPF">Senha login CPF</label>
+                    <input type="text" className="form-control" id="passCPF"  />                    
                   </div>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="username">Username</label>
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <span className="input-group-text">@</span>
-                    </div>
-                    <input type="text" className="form-control" id="username" placeholder="Username" required />
-                    <div className="invalid-feedback" style={{width: '100%'}}>
-                      Your username is required.
-                    </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="userCNPJ">CNPJ do usuário</label>
+                    <input type="text" className="form-control" id="userCNPJ"  />                    
                   </div>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="email">Email <span className="text-muted">(Optional)</span></label>
-                  <input type="email" className="form-control" id="email" placeholder="you@example.com" />
-                  <div className="invalid-feedback">
-                    Please enter a valid email address for shipping updates.
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="passCNPJ">Senha login CNPJ</label>
+                    <input type="text" className="form-control" id="passCNPJ"  />                    
                   </div>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="address">Address</label>
-                  <input type="text" className="form-control" id="address" placeholder="1234 Main St" required />
-                  <div className="invalid-feedback">
-                    Please enter your shipping address.
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="userPassport">Passaporte do usuário</label>
+                    <input type="text" className="form-control" id="userPassport"  />                    
                   </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="passPassport">Senha login Passaporte</label>
+                    <input type="text" className="form-control" id="passPassport"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="userCPFWrong">CPF inválido</label>
+                    <input type="text" className="form-control" id="userCPFWrong"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                  <label htmlFor="username">Email de login do usuário</label>
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">@</span>
+                      </div>
+                      <input type="text" className="form-control" id="username"  />                    
+                    </div>                   
+                  </div> 
                 </div>
-                <div className="mb-3">
-                  <label htmlFor="address2">Address 2 <span className="text-muted">(Optional)</span></label>
-                  <input type="text" className="form-control" id="address2" placeholder="Apartment or suite" />
-                </div>
+
+                <h4 className="mb-3">Dados de passageiros</h4>
                 <div className="row">
-                  <div className="col-md-5 mb-3">
-                    <label htmlFor="country">Country</label>
-                    <select className="custom-select d-block w-100" id="country" required>
-                      <option value>Choose...</option>
-                      <option>United States</option>
-                    </select>
-                    <div className="invalid-feedback">
-                      Please select a valid country.
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="passenger1">Passageiro 1</label>
+                    <input type="text" className="form-control" id="passenger1"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="docPassenger1">Documento do passageiro 1</label>
+                    <input type="text" className="form-control" id="docPassenger1"  />                    
+                  </div>
+
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="passenger2">Passageiro 2</label>
+                    <input type="text" className="form-control" id="passenger2"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="docPassenger2">Documento do passageiro 2</label>
+                    <input type="text" className="form-control" id="docPassenger2"  />                    
+                  </div>
+
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="passenger3">Passageiro 3</label>
+                    <input type="text" className="form-control" id="passenger3"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="docPassenger3">Documento do passageiro 3</label>
+                    <input type="text" className="form-control" id="docPassenger3"  />                    
+                  </div>
+
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="passenger4">Passageiro 4</label>
+                    <input type="text" className="form-control" id="passenger4"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="docPassenger4">Documento do passageiro 4</label>
+                    <input type="text" className="form-control" id="docPassenger4"  />                    
+                  </div>
+
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="passenger5">Passageiro 5</label>
+                    <input type="text" className="form-control" id="passenger5"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="docPassenger5">Documento do passageiro 5</label>
+                    <input type="text" className="form-control" id="docPassenger5"  />                    
+                  </div>
+
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="passenger6">Passageiro 6</label>
+                    <input type="text" className="form-control" id="passenger6"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="docPassenger6">Documento do passageiro 6</label>
+                    <input type="text" className="form-control" id="docPassenger6"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="studentCpf">CPF do estudante</label>
+                    <input type="text" className="form-control" id="studentCpf"  />                    
+                  </div>
+                </div>
+
+                <h4 className="mb-3">Dados do cartão de crédito</h4>
+                <div className="row">
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="numCard">Número do cartão de crédito</label>
+                    <input type="text" className="form-control" id="numCard"  />                    
+                  </div>
+                  <div className="col-md-3 mb-3">
+                    <label htmlFor="valDate">Data de validade</label>
+                    <input type="text" className="form-control" id="valDate"  />                    
+                  </div>
+                  <div className="col-md-3 mb-3">
+                    <label htmlFor="codCard">Código de segurança</label>
+                    <input type="text" className="form-control" id="codCard"  />                    
+                  </div>
+                </div>
+
+                <h4 className="mb-3">Dados do usuário</h4>
+                <div className="row">
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="name">Nome</label>
+                    <input type="text" className="form-control" id="name"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="birth">Data de nascimento</label>
+                    <input type="text" className="form-control" id="birth"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="cpf">CPF</label>
+                    <input type="text" className="form-control" id="cpf"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="cnpj">CNPJ</label>
+                    <input type="text" className="form-control" id="cnpj"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="passport">Passaporte</label>
+                    <input type="text" className="form-control" id="passport"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                  <label htmlFor="email">Email</label>
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">@</span>
+                      </div>
+                      <input type="text" className="form-control" id="email"  />                    
                     </div>
+                  </div> 
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="pass">Senha</label>
+                    <input type="text" className="form-control" id="pass"  />                    
+                  </div> 
+                  <div className="col-md-2 mb-3">
+                    <label htmlFor="ddd">DDD</label>
+                    <input type="text" className="form-control" id="ddd"  />                    
+                  </div> 
+                  <div className="col-md-4 mb-3">
+                    <label htmlFor="phoneNumber">Telefone</label>
+                    <input type="text" className="form-control" id="phoneNumber"  />                    
+                  </div>                   
+                </div>
+
+
+                <h4 className="mb-3">Dados de endereço</h4>
+                <div className="row">
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="address">Endereço</label>
+                    <input type="text" className="form-control" id="address"  />                    
+                  </div>
+                  <div className="col-md-2 mb-3">
+                    <label htmlFor="number">Número</label>
+                    <input type="text" className="form-control" id="number"  />                    
                   </div>
                   <div className="col-md-4 mb-3">
-                    <label htmlFor="state">State</label>
-                    <select className="custom-select d-block w-100" id="state" required>
-                      <option value>Choose...</option>
-                      <option>California</option>
-                    </select>
-                    <div className="invalid-feedback">
-                      Please provide a valid state.
-                    </div>
-                  </div>
-                  <div className="col-md-3 mb-3">
-                    <label htmlFor="zip">Zip</label>
-                    <input type="text" className="form-control" id="zip" placeholder required />
-                    <div className="invalid-feedback">
-                      Zip code required.
-                    </div>
-                  </div>
-                </div>
-                <hr className="mb-4" />
-                <div className="custom-control custom-checkbox">
-                  <input type="checkbox" className="custom-control-input" id="same-address" />
-                  <label className="custom-control-label" htmlFor="same-address">Shipping address is the same as my billing address</label>
-                </div>
-                <div className="custom-control custom-checkbox">
-                  <input type="checkbox" className="custom-control-input" id="save-info" />
-                  <label className="custom-control-label" htmlFor="save-info">Save this information for next time</label>
-                </div>
-                <hr className="mb-4" />
-                <h4 className="mb-3">Payment</h4>
-                <div className="d-block my-3">
-                  <div className="custom-control custom-radio">
-                    <input id="credit" name="paymentMethod" type="radio" className="custom-control-input" defaultChecked required />
-                    <label className="custom-control-label" htmlFor="credit">Credit card</label>
-                  </div>
-                  <div className="custom-control custom-radio">
-                    <input id="debit" name="paymentMethod" type="radio" className="custom-control-input" required />
-                    <label className="custom-control-label" htmlFor="debit">Debit card</label>
-                  </div>
-                  <div className="custom-control custom-radio">
-                    <input id="paypal" name="paymentMethod" type="radio" className="custom-control-input" required />
-                    <label className="custom-control-label" htmlFor="paypal">PayPal</label>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-md-6 mb-3">
-                    <label htmlFor="cc-name">Name on card</label>
-                    <input type="text" className="form-control" id="cc-name" placeholder required />
-                    <small className="text-muted">Full name as displayed on card</small>
-                    <div className="invalid-feedback">
-                      Name on card is required
-                    </div>
+                    <label htmlFor="zip">CEP</label>
+                    <input type="text" className="form-control" id="zip"  />                    
                   </div>
                   <div className="col-md-6 mb-3">
-                    <label htmlFor="cc-number">Credit card number</label>
-                    <input type="text" className="form-control" id="cc-number" placeholder required />
-                    <div className="invalid-feedback">
-                      Credit card number is required
-                    </div>
+                    <label htmlFor="complement">Complemento</label>
+                    <input type="text" className="form-control" id="complement"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="neigh">Bairro</label>
+                    <input type="text" className="form-control" id="neigh"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="city">Cidade</label>
+                    <input type="text" className="form-control" id="city"  />                    
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label htmlFor="country">País</label>
+                    <input type="text" className="form-control" id="country"  />                    
                   </div>
                 </div>
-                <div className="row">
-                  <div className="col-md-3 mb-3">
-                    <label htmlFor="cc-expiration">Expiration</label>
-                    <input type="text" className="form-control" id="cc-expiration" placeholder required />
-                    <div className="invalid-feedback">
-                      Expiration date required
-                    </div>
-                  </div>
-                  <div className="col-md-3 mb-3">
-                    <label htmlFor="cc-cvv">CVV</label>
-                    <input type="text" className="form-control" id="cc-cvv" placeholder required />
-                    <div className="invalid-feedback">
-                      Security code required
-                    </div>
-                  </div>
-                </div>
-                <hr className="mb-4" />
-                <button className="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
               </form>
             </div>
-          </div>
-          <footer className="my-5 pt-5 text-muted text-center text-small">
-            <p className="mb-1">© 2017-2018 Company Name</p>
-            <ul className="list-inline">
-              <li className="list-inline-item"><a href="#top">Privacy</a></li>
-              <li className="list-inline-item"><a href="#top">Terms</a></li>
-              <li className="list-inline-item"><a href="#top">Support</a></li>
-            </ul>
-          </footer>
+          </div>     
         </div>      
   );
 
