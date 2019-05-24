@@ -57,6 +57,7 @@ const NewComponent = () =>(
                       </h6>
                     </div>
                 </li>
+                <hr className="md-2"></hr>
                 <div className="container">
                   <div className="row"> 
                     <div className="col">     
