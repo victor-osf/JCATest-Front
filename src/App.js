@@ -19,7 +19,7 @@ class App extends Component {
 
   handlePost(event){
     event.preventDefault();
-    axios.post(API_URL + '/property')
+    axios.post(API_URL + '/run')
     .then(response =>  {
       this.setState(response.data.data)
     })
