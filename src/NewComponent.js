@@ -75,7 +75,7 @@ export default class NewComponent extends Component {
                       <button className="btn btn-primary btn-block" type="submit">Salvar</button>
                     </div>
                     <div className="col">
-                      <button className="btn btn-success btn-block" type="submit">Testar</button>
+                      <button className="btn btn-success btn-block" type="button" onClick={this.props.handlePost}>Testar</button>
                     </div>
                   </div>
                 </div>

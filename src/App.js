@@ -3,7 +3,7 @@ import './App.css';
 import NewComponent from './NewComponent.js';
 import axios from 'axios'
 
-const API_URL = 'http://10.1.2.62:8000/api';
+const API_URL = 'http://10.1.2.39:8000/api';
 class App extends Component {
   constructor(props) {
     super(props)
@@ -12,6 +12,13 @@ class App extends Component {
 
   componentDidMount() {
     axios.get(API_URL)
+    .then(response =>  {
+      this.setState(response.data.data)
+    })
+  }
+
+  handlePost(e){
+    axios.post(API_URL)
     .then(response =>  {
       this.setState(response.data.data)
     })
@@ -72,7 +79,7 @@ class App extends Component {
   render() {    
     if (this.state) {
       return (
-        <NewComponent data={this.state} handleSubmit={this.handleSubmit.bind(this)}/>
+        <NewComponent data={this.state} handleSubmit={this.handleSubmit.bind(this)} handlePost={this.handlePost.bind(this)}/>
       );
     }
     else {
