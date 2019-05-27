@@ -3,7 +3,7 @@ import './App.css';
 import NewComponent from './NewComponent.js';
 import axios from 'axios'
 
-const API_URL = 'http://10.1.2.39:8000/api';
+const API_URL = 'http://10.1.2.62:8000/api';
 class App extends Component {
   constructor(props) {
     super(props)
@@ -11,14 +11,15 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(API_URL)
+    axios.get(API_URL + '/property')
     .then(response =>  {
       this.setState(response.data.data)
     })
   }
 
-  handlePost(e){
-    axios.post(API_URL)
+  handlePost(event){
+    event.preventDefault();
+    axios.post(API_URL + '/property')
     .then(response =>  {
       this.setState(response.data.data)
     })
@@ -70,7 +71,7 @@ class App extends Component {
       country: data.country.value
     }
 
-    axios.put(API_URL, body)
+    axios.put(API_URL + '/property', body)
     .then(response =>  {
       alert(response.data.message)
     })
