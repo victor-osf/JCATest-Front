@@ -1,7 +1,7 @@
 import React from 'react';
 import logojca from './logojca.svg';
 
-const NewComponent = () =>(    
+const NewComponent = () =>(
         <div className="container">
           <div className="py-5 text-center">
             <img className="d-block mx-auto mb-4" src={logojca} alt="" width={300} height={150} />
@@ -14,16 +14,18 @@ const NewComponent = () =>(
           <div className="row">
             <div className="col-md-4 order-md-2 mb-4">
               <h4 className="d-flex justify-content-between align-items-center mb-3">
-                <span className="text-muted">Selecione a empresa</span>
+                <span className="text-muted">URL Base</span>
               </h4>
-              <ul className="list-group mb-3">
+              <label htmlFor="userCPF">url do ambiente a ser testado</label>
+                    <input type="text" className="form-control" id="userCPF" defaultValue="http://jca.ifactory.com.br/content/jca/cometa/en.html" /> 
+              {/*<ul className="list-group mb-3">
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
                     <div className="custom-control custom-radio">
                       <h6>
-                        <input id="cometa" name="baseUrl" type="radio" className="custom-control-input" defaultChecked  />
+                        <input id="cometa" name="baseUrl" type="radio" className="custom-control-input" checked="cometa" defaultChecked  />
                         <label className="custom-control-label" htmlFor="cometa">Cometa</label>
                       </h6>
-                        <small className="text-muted">http://jca.ifactory.com.br/content/jca/cometa/en.html</small>
+                        <input type="text" className="form-control" if  disabled defaultValue="http://jca.ifactory.com.br/content/jca/cometa/en.html"></input>
                     </div>
                 </li>
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
@@ -74,7 +76,7 @@ const NewComponent = () =>(
                     </div>
                   </div>
                 </div>                  
-              </ul>
+              </ul>*/}
             </div>
 
 
