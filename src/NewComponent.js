@@ -1,5 +1,5 @@
 import React from 'react';
-import logojca from './logojca.svg'
+import logojca from './logojca.svg';
 
 const NewComponent = () =>(    
         <div className="container">
@@ -23,6 +23,7 @@ const NewComponent = () =>(
                         <input id="cometa" name="baseUrl" type="radio" className="custom-control-input" defaultChecked  />
                         <label className="custom-control-label" htmlFor="cometa">Cometa</label>
                       </h6>
+                        <small class="text-muted">http://jca.ifactory.com.br/content/jca/cometa/en.html</small>
                     </div>
                 </li>
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
@@ -31,6 +32,7 @@ const NewComponent = () =>(
                         <input id="rapido" name="baseUrl" type="radio" className="custom-control-input"  />
                         <label className="custom-control-label" htmlFor="rapido">Rápido Ribeirão</label>
                       </h6>
+                      <small class="text-muted">http://jca.ifactory.com.br/content/jca/rapido-ribeirao/en.html</small>
                     </div>
                 </li>
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
@@ -39,6 +41,7 @@ const NewComponent = () =>(
                         <input id="catarinense" name="baseUrl" type="radio" className="custom-control-input"  />
                         <label className="custom-control-label" htmlFor="catarinense">Catarinense</label>
                       </h6>
+                      <small class="text-muted">http://jca.ifactory.com.br/content/jca/catarinense/en.html</small>
                     </div>
                 </li>
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
@@ -47,6 +50,7 @@ const NewComponent = () =>(
                         <input id="1001" name="baseUrl" type="radio" className="custom-control-input"  />
                         <label className="custom-control-label" htmlFor="1001">1001</label>
                       </h6>
+                      <small class="text-muted">http://jca.ifactory.com.br/content/jca/viacao1001/en.html</small>
                     </div>
                 </li>
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
@@ -55,8 +59,10 @@ const NewComponent = () =>(
                         <input id="expresso" name="baseUrl" type="radio" className="custom-control-input"  />
                         <label className="custom-control-label" htmlFor="expresso">Expresso do Sul</label>
                       </h6>
+                      <small class="text-muted">http://jca.ifactory.com.br/content/jca/expresso-sul/en.html</small>
                     </div>
                 </li>
+                
                 <hr className="md-2"></hr>
                 <div className="container">
                   <div className="row"> 
@@ -272,7 +278,8 @@ const NewComponent = () =>(
               </form>
             </div>
           </div>     
-        </div>      
+        </div>
+              
   );
 
   export default NewComponent;
