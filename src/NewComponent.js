@@ -23,7 +23,7 @@ const NewComponent = () =>(
                         <input id="cometa" name="baseUrl" type="radio" className="custom-control-input" defaultChecked  />
                         <label className="custom-control-label" htmlFor="cometa">Cometa</label>
                       </h6>
-                        <small className="text-muted list-group">http://jca.ifactory.com.br/content/jca/cometa/en.html</small>
+                        <small className="text-muted">http://jca.ifactory.com.br/content/jca/cometa/en.html</small>
                     </div>
                 </li>
                 <li className="list-group-item d-flex justify-content-between lh-condensed">
