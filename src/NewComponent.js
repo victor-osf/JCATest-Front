@@ -177,6 +177,14 @@ export default class NewComponent extends Component {
                   </div>
                 </div>
 
+                <div className="container botoes">
+                  <div className="row">
+                    <div className="col">
+                      <button className="btn btn-secondary btn-lg btn-block" type="button" onClick={this.props.verRelatorio}>Ver Relatório</button>
+                    </div>
+                  </div>
+                </div>
+
             </div>
 
 
