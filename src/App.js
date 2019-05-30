@@ -5,7 +5,7 @@ import Report from './Report.js';
 import axios from 'axios';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-const API_URL = 'http://10.1.2.39:8000/api';
+const API_URL = 'http://10.1.2.62:8000/api';
 
 class App extends Component {
   constructor(props) {
@@ -30,13 +30,7 @@ class App extends Component {
         this.setState(response.data.data)
       })
   }
-  verRelatorio(){
-    axios.get(API_URL+'/report')
-      .then(response => {
-        console.log(response.data);
-        window.location=response.data;
-      })
-  }
+
   getValues(event) {
     event.stopImmediatePropagation();
     var specs = document.querySelectorAll('[name=specs]:checked');
