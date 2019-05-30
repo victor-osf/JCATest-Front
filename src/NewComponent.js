@@ -331,12 +331,30 @@ export default class NewComponent extends Component {
                   <input type="text" className="form-control" id="passport" defaultValue={this.props.data.passport} />
                 </div>
                 <div className="col-md-6 mb-3">
-                  <label htmlFor="email">Email</label>
+                  <label htmlFor="emailCpf">Email cadastro CPF</label>
                   <div className="input-group">
                     <div className="input-group-prepend">
                       <span className="input-group-text">@</span>
                     </div>
-                    <input type="text" className="form-control" id="email" defaultValue={this.props.data.email} />
+                    <input type="text" className="form-control" id="emailCpf" defaultValue={this.props.data.emailCpf} />
+                  </div>
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label htmlFor="emailCnpj">Email cadastro CNPJ</label>
+                  <div className="input-group">
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">@</span>
+                    </div>
+                    <input type="text" className="form-control" id="emailCnpj" defaultValue={this.props.data.emailCnpj} />
+                  </div>
+                </div>
+                <div className="col-md-6 mb-3">
+                  <label htmlFor="emailPass">Email cadastro PASSAPORTE</label>
+                  <div className="input-group">
+                    <div className="input-group-prepend">
+                      <span className="input-group-text">@</span>
+                    </div>
+                    <input type="text" className="form-control" id="emailPass" defaultValue={this.props.data.emailPass} />
                   </div>
                 </div>
                 <div className="col-md-6 mb-3">
