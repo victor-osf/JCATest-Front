@@ -3,6 +3,16 @@ a {
   color: white;
 }
 
+.page-footer{
+  background-color: rgba(0, 105, 217, 0.9);
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  color: #eee
+}
+
 .App {
   text-align: center;
 }

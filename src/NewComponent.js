@@ -11,6 +11,7 @@ export default class NewComponent extends Component {
     //fim
 
     return (
+      <div>
       <div className="container">
         <div className="py-5 text-center">
           <img className="d-block mx-auto mb-4" src={logojca} alt="" width={300} height={150} />
@@ -408,6 +409,12 @@ export default class NewComponent extends Component {
           </div>
         </form>
       </div>
+      <footer className="page-footer font-small blue">
+        <div className="footer-copyright text-center py-3">© 2019 Copyright
+          <a href="http://www.jcaholding.com.br/"> JCA Holding</a>
+        </div>
+      </footer>
+    </div>
     )
   }
 }
