@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import logojca from './logojca.svg';
+import { Link } from 'react-router-dom'
 
 export default class NewComponent extends Component {
   render() {
@@ -180,7 +181,7 @@ export default class NewComponent extends Component {
                 <div className="container botoes">
                   <div className="row">
                     <div className="col">
-                      <button className="btn btn-secondary btn-lg btn-block" type="button" onClick={this.props.verRelatorio}>Ver Relatório</button>
+                      <button className="btn btn-secondary btn-lg btn-block" type="button" onClick={this.props.verRelatorio}><Link to='/about'> Ver Relatorio </Link></button>
                     </div>
                   </div>
                 </div>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import NewComponent from './NewComponent.js';
+import Report from './Report.js';
 import axios from 'axios';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 const API_URL = 'http://10.1.2.39:8000/api';
 
@@ -28,7 +30,6 @@ class App extends Component {
         this.setState(response.data.data)
       })
   }
-
   verRelatorio(){
     axios.get(API_URL+'/report')
       .then(response => {
@@ -36,7 +37,6 @@ class App extends Component {
         window.location=response.data;
       })
   }
-
   getValues(event) {
     event.stopImmediatePropagation();
     var specs = document.querySelectorAll('[name=specs]:checked');
@@ -52,7 +52,6 @@ class App extends Component {
     values = values.replace(/'/g, '"')
     this.setState({ suites: JSON.parse(values) });
   }
-
 
   handleSubmit(event) {
     event.preventDefault();
@@ -115,11 +114,14 @@ class App extends Component {
   render() {
     if (this.state.formData) {
       return (
-        <NewComponent data={this.state.formData}
-                      handleSubmit={this.handleSubmit.bind(this)}
-                      handlePost={this.handlePost.bind(this)}
-                      getValues={this.getValues.bind(this)}
-                      verRelatorio={this.verRelatorio.bind(this)} />
+        <BrowserRouter>
+            <Route path="/" exact render={(routeProps) => <NewComponent {...routeProps} 
+              data={this.state.formData}
+              handleSubmit={this.handleSubmit.bind(this)}
+              handlePost={this.handlePost.bind(this)}
+              getValues={this.getValues.bind(this)} />}/>
+            <Route path="/about" component={Report} />
+        </BrowserRouter>
       );
     }
     else {
