@@ -3,7 +3,7 @@ import './App.css';
 import NewComponent from './NewComponent.js';
 import axios from 'axios';
 
-const API_URL = 'http://10.1.2.62:8000/api';
+const API_URL = 'http://10.1.2.39:8000/api';
 
 class App extends Component {
   constructor(props) {
@@ -33,6 +33,7 @@ class App extends Component {
     axios.get(API_URL+'/report')
       .then(response => {
         console.log(response.data);
+        window.location=response.data;
       })
   }
 
