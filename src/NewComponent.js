@@ -181,7 +181,7 @@ export default class NewComponent extends Component {
                 <div className="container botoes">
                   <div className="row">
                     <div className="col">
-                      <button className="btn btn-secondary btn-lg btn-block" type="button" onClick={this.props.verRelatorio}><Link to='/about'> Ver Relatorio </Link></button>
+                    <Link to='/about'> <button className="btn btn-secondary btn-lg btn-block" type="button" onClick={this.props.verRelatorio}>Ver Relatorio</button> </Link>
                     </div>
                   </div>
                 </div>
