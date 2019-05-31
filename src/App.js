@@ -4,8 +4,7 @@ import NewComponent from './NewComponent.js';
 import Report from './Report.js';
 import axios from 'axios';
 import { BrowserRouter, Route } from 'react-router-dom';
-
-const API_URL = 'http://10.1.2.62:8000/api';
+const httpService = require('./service/http-service');
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +16,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get(API_URL)
+    axios.get(httpService.url)
       .then(response => {
         this.setState({ formData: response.data.data })
       })
@@ -25,7 +24,7 @@ class App extends Component {
 
   handlePost(event) {
     event.preventDefault();
-    axios.post(API_URL)
+    axios.post(httpService.url)
       .then(response => {
         this.setState(response.data.data)
       })
@@ -99,7 +98,7 @@ class App extends Component {
         }
     }
 
-    axios.put(API_URL, body)
+    axios.put(httpService.url, body)
       .then(response => {
         alert(response.data.message)
       })

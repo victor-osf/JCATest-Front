@@ -1,10 +1,3 @@
-import axios from 'axios'
-const API_URL = 'http://jsonplaceholder.typicode.com';
+const API_URL = 'http://localhost:8000/api';
 
-export default class HttpService {
-
-  get() {
-    return 
-  }
-
-}
+exports.url = API_URL

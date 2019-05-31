@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
-const API_URL = 'http://10.1.2.62:8000/api';
-
+const httpService = require('./service/http-service');
 export default class Report extends Component {
   constructor(props) {
     super(props)
@@ -12,7 +10,7 @@ export default class Report extends Component {
   }
 
   componentDidMount() {
-    axios.get(API_URL + '/report')
+    axios.get(httpService.url + '/report')
     .then(response => { 
       this.setState({ reportHTML: response.data })
     })
