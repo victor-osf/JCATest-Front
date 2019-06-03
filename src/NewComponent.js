@@ -83,7 +83,7 @@ export default class NewComponent extends Component {
               <div className="row">
                 <div className="col-12 col-lg-6">
                   <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="loginCPF" defaultChecked="true"  value="'loginCPF' : 'spec/login/loginCPF_spec.js'"/>
+                    <input type="checkbox" className="custom-control-input" name="specs" id="loginCPF" value="'loginCPF' : 'spec/login/loginCPF_spec.js'"/>
                     <label className="custom-control-label" htmlFor="loginCPF">Login CPF</label>
                   </div>
                 </div>
