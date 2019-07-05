@@ -202,16 +202,7 @@ export default class NewComponent extends Component {
                 <InputField label="Passaporte do usuário" id="userPassport" defaultValue={this.props.data.userPassport}/>
                 <InputField label="Senha login Passaporte" id="passPassport" defaultValue={this.props.data.passPassport}/>
                 <InputField label="CPF inválido" id="userCPFWrong" defaultValue={this.props.data.userCPFWrong}/>
-                
-                {/*<div className="col-md-6 mb-3">
-              <label htmlFor="username">Email de login do usuário</label>
-                <div className="input-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">@</span>
-                  </div>
-                  <input type="text" className="form-control" id="username" defaultValue={this.props.data.username} />                    
-                </div>                   
-              </div> */}
+                {/* <InputField label="Email de login do usuário" id="username" isEmail={true} defaultValue={this.props.data.username}/> */}
               </div>
 
               <h4 className="mb-3">Dados de passageiros</h4>
