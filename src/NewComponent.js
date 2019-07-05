@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logojca from './logojca.svg';
 import { Link } from 'react-router-dom'
 import { InputField } from './components/InputField/InputFieldView';
+import { InputCheckbox } from './components/InputCheckbox/InputCheckboxView';
 
 export default class NewComponent extends Component {
   render() {
@@ -82,92 +83,20 @@ export default class NewComponent extends Component {
                 <span className="text-muted">Seleção de Testes</span>
               </h4>
               <div className="row">
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="loginCPF" value="'loginCPF' : 'spec/login/loginCPF_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="loginCPF">Login CPF</label>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="loginCNPJ" value="'loginCNPJ' : 'spec/login/loginCNPJ_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="loginCNPJ">Login CNPJ</label>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="loginPassport" value="'loginPassport' : 'spec/login/loginPassport_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="loginPassport">Login Passporte</label>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="loginInvalid" value="'loginInvalid' : 'spec/login/loginInvalid_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="loginInvalid">Login Inválido</label>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="forgotPassword" value="'forgotPassword' : 'spec/login/forgotPass_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="forgotPassword">Esqueceu Senha</label>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="accountExistent" value="'accountExistent' : 'spec/login/accountExistent_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="accountExistent">Conta Inexistente</label>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="cnpjAccount" value="'cnpjAccount' : 'spec/login/cnpjAccount_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="cnpjAccount">Conta com CNPJ</label>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="cpfAccount" value="'cpfAccount' : 'spec/login/cpfAccount_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="cpfAccount">Conta com CPF</label>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="passportAccount" value="'passportAccount' : 'spec/login/passportAccount_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="passportAccount">Conta com Passaporte</label>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="fluxoAutAntes" value="'fluxoAutAntes' : 'spec/flow/idaUsuarioAutenticadoAntes_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="fluxoAutAntes">Fluxo Antes</label>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="fluxoAutDurante" value="'fluxoAutDurante' : 'spec/flow/idaUsuarioAutenticadoDurante_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="fluxoAutDurante">Fluxo Durante</label>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="fluxoUserEPassageiro" value="'fluxoUserEPassageiro' : 'spec/flow/idaUsuarioAutenticadoEPassageiro_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="fluxoUserEPassageiro">Fluxo Passageiro</label>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="fluxoUserEstudante" value="'fluxoUserEstudante' : 'spec/flow/idaUsuarioAutenticadoValEstudante_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="fluxoUserEstudante">Fluxo Estudante</label>
-                  </div>
-                </div>
-                <div className="col-12 col-lg-6">
-                  <div className="custom-control custom-checkbox">
-                    <input type="checkbox" className="custom-control-input" name="specs" id="fluxoIdaVoltaUserEPassageiro" value="'fluxoIdaVoltaUserEPassageiro' : 'spec/flow/idaVoltaUsuarioAutenticadoEPassageiro_spec.js'"/>
-                    <label className="custom-control-label" htmlFor="fluxoIdaVoltaUserEPassageiro">Fluxo Ida e Volta</label>
-                  </div>
-                </div>
-
-
+                <InputCheckbox id="loginCPF" file="spec/login/loginCPF_spec.js" label="Login CPF"/>
+                <InputCheckbox id="loginCNPJ" file="spec/login/loginCNPJ_spec.js" label="Login CNPJ"/>
+                <InputCheckbox id="loginPassport" file="spec/login/loginPassport_spec.js" label="Login Passaporte"/>
+                <InputCheckbox id="loginInvalid" file="spec/login/loginInvalid_spec.js" label="Login Inválido"/>
+                <InputCheckbox id="forgotPassword" file="spec/login/forgotPass_spec.js" label="Esqueceu Senha"/>
+                <InputCheckbox id="accountExistent" file="spec/login/accountExistent_spec.js" label="Conta Inexistente"/>
+                <InputCheckbox id="cnpjAccount" file="spec/login/cnpjAccount_spec.js" label="Conta com CNPJ"/>
+                <InputCheckbox id="cpfAccount" file="spec/login/cpfAccount_spec.js" label="Conta com CPF"/>
+                <InputCheckbox id="passportAccount" file="spec/login/passportAccount_spec.js" label="Conta com Passaporte"/>
+                <InputCheckbox id="fluxoAutAntes" file="spec/login/fluxoAutAntes_spec.js" label="Fluxo Antes"/>
+                <InputCheckbox id="fluxoAutDurante" file="spec/login/fluxoAutDurante_spec.js" label="Fluxo Durante"/>
+                <InputCheckbox id="fluxoUserEPassageiro" file="spec/login/fluxoUserEPassageiro_spec.js" label="Fluxo Passageiro"/>
+                <InputCheckbox id="fluxoUserEstudante" file="spec/login/fluxoUserEstudante_spec.js" label="Fluxo Estudante"/>
+                <InputCheckbox id="fluxoIdaVoltaUserEPassageiro" file="spec/login/fluxoIdaVoltaUserEPassageiro_spec.js" label="Fluxo Ida e Volta"/>
               </div>
                 <div className="container botoes">
                   <div className="row">
