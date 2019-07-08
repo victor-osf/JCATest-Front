@@ -1,8 +1,5 @@
 import React from 'react';
 export class InputCheckbox extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div className="col-12 col-lg-6">

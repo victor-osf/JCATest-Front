@@ -1,8 +1,5 @@
 import React from 'react';
 export class InputField extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div className={'col-md-' + (this.props.colSize || '6') + ' mb-3'}>
