@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
 import logojca from './logojca.svg';
-import { Link } from 'react-router-dom'
 import { InputField } from './components/InputField/InputFieldView';
-import { InputCheckbox } from './components/InputCheckbox/InputCheckboxView';
+import { TestSelection } from './components/TestSelection/TestSelectionView'
+import { Link } from 'react-router-dom'
+import axios from 'axios';
+const HttpService = require('./service/http-service');
 
 export default class NewComponent extends Component {
-  render() {
-    //receber checkbox
-    var checkboxes = document.querySelectorAll('[name=specs]');
-    for (var i = 0; i < checkboxes.length; i++) {
-    checkboxes[i].addEventListener('click', this.props.getValues, false);}
-    //fim
+  constructor(props){
+    super(props);
+    this.handlePost = this.handlePost.bind(this)
+  }
 
-    return (
+  handlePost(event) {
+    event.preventDefault();
+    axios.post(HttpService.url)
+      .then(response => {
+        this.setState(response.data.data)
+      })
+  }
+
+  render() {
+      console.log(this.props);
+      return (
       <div>
       <div className="container">
         <div className="py-5 text-center">
@@ -79,44 +89,30 @@ export default class NewComponent extends Component {
             </li>
           </ul>*/}
               <hr className="sm-1"></hr>
-              <h4 className="d-flex justify-content-between align-items-center mb-3">
-                <span className="text-muted">Seleção de Testes</span>
-              </h4>
-              <div className="row">
-                <InputCheckbox id="loginCPF" file="spec/login/loginCPF_spec.js" label="Login CPF"/>
-                <InputCheckbox id="loginCNPJ" file="spec/login/loginCNPJ_spec.js" label="Login CNPJ"/>
-                <InputCheckbox id="loginPassport" file="spec/login/loginPassport_spec.js" label="Login Passaporte"/>
-                <InputCheckbox id="loginInvalid" file="spec/login/loginInvalid_spec.js" label="Login Inválido"/>
-                <InputCheckbox id="forgotPassword" file="spec/login/forgotPass_spec.js" label="Esqueceu Senha"/>
-                <InputCheckbox id="accountExistent" file="spec/login/accountExistent_spec.js" label="Conta Inexistente"/>
-                <InputCheckbox id="cnpjAccount" file="spec/login/cnpjAccount_spec.js" label="Conta com CNPJ"/>
-                <InputCheckbox id="cpfAccount" file="spec/login/cpfAccount_spec.js" label="Conta com CPF"/>
-                <InputCheckbox id="passportAccount" file="spec/login/passportAccount_spec.js" label="Conta com Passaporte"/>
-                <InputCheckbox id="fluxoAutAntes" file="spec/login/fluxoAutAntes_spec.js" label="Fluxo Antes"/>
-                <InputCheckbox id="fluxoAutDurante" file="spec/login/fluxoAutDurante_spec.js" label="Fluxo Durante"/>
-                <InputCheckbox id="fluxoUserEPassageiro" file="spec/login/fluxoUserEPassageiro_spec.js" label="Fluxo Passageiro"/>
-                <InputCheckbox id="fluxoUserEstudante" file="spec/login/fluxoUserEstudante_spec.js" label="Fluxo Estudante"/>
-                <InputCheckbox id="fluxoIdaVoltaUserEPassageiro" file="spec/login/fluxoIdaVoltaUserEPassageiro_spec.js" label="Fluxo Ida e Volta"/>
-              </div>
-                <div className="container botoes">
-                  <div className="row">
-                    <div className="col">
-                      <button className="btn btn-primary btn-block" type="submit">Salvar</button>
+              <TestSelection/>
+              <div className="container botoes">
+                    <div className="row">
+                        <div className="col-6">
+                            <button className="btn btn-primary btn-block" type="submit">Salvar</button>
+                        </div>
+                        <div className="col-6">
+                            <button
+                                className="btn btn-success btn-block"
+                                type="button"
+                                onClick={this.handlePost}>Testar</button>
+                        </div>
                     </div>
-                    <div className="col">
-                      <button className="btn btn-success btn-block" type="button" onClick={this.props.handlePost}>Testar</button>
+                    <div className="row mt-1">
+                        <div className="col-12">
+                            <Link to='/about'>
+                                <button
+                                    className="btn btn-secondary btn-lg btn-block"
+                                    type="button"
+                                    onClick={this.props.verRelatorio}>Ver Relatorio</button>
+                            </Link>
+                        </div>
                     </div>
-                  </div>
                 </div>
-
-                <div className="container botoes">
-                  <div className="row">
-                    <div className="col">
-                    <Link to='/about'> <button className="btn btn-secondary btn-lg btn-block" type="button" onClick={this.props.verRelatorio}>Ver Relatorio</button> </Link>
-                    </div>
-                  </div>
-                </div>
-
             </div>
 
 
