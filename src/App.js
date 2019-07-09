@@ -1,33 +1,30 @@
 import React, { Component } from 'react';
 import './App.css';
-import NewComponent from './NewComponent.js';
-import Report from './Report.js';
+import NewComponent from './components/NewComponent.js';
+import Report from './components/Report.js';
 import axios from 'axios';
 import { BrowserRouter, Route } from 'react-router-dom';
-const httpService = require('./service/http-service');
+import httpService from './service/http-service';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      suites: {},
+      specs: {},
       formData: {}
     };
   }
 
-  componentDidMount() {
-    axios.get(httpService.url)
-      .then(response => {
-        this.setState({ formData: response.data.data })
-      })
+  async componentDidMount() {
+    let response1 = await axios.get(httpService.url + '/property/default')
+    let response2 = await axios.get(httpService.url + '/spec')
+    this.setState({ formData: response1.data, specs: response2.data })
   }
 
-  handlePost(event) {
+  async handlePost(event) {
     event.preventDefault();
-    axios.post(httpService.url)
-      .then(response => {
-        this.setState(response.data.data)
-      })
+    let response = await axios.post(httpService.url)
+    this.setState(response.data)
   }
 
   getValues(event) {
@@ -43,14 +40,14 @@ class App extends Component {
     }
     values = values + '}'
     values = values.replace(/'/g, '"')
-    this.setState({ suites: JSON.parse(values) });
+    this.setState({ specs: JSON.parse(values) });
   }
 
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
     const data = event.target
     const body = {
-      suites: this.state.suites,
+      specs: this.state.specs,
       formData: {
         baseUrl: data.baseUrl.value,
         userCPF: data.userCPF.value,
@@ -97,22 +94,21 @@ class App extends Component {
       }
     }
 
-    axios.put(httpService.url, body)
-      .then(response => {
-        alert(response.data.message)
-      })
+    let response = await axios.put(httpService.url, body)
+    alert(response.data.message)
   }
 
   render() {
-    if (this.state.formData) {
+    if (this.state.formData && this.state.specs) {
       return (
         <BrowserRouter>
-            <Route path="/" exact render={(routeProps) => <NewComponent {...routeProps} 
-              data={this.state.formData}
-              handleSubmit={this.handleSubmit.bind(this)}
-              handlePost={this.handlePost.bind(this)}
-              getValues={this.getValues.bind(this)} />}/>
-            <Route path="/about" component={Report} />
+          <Route path="/" exact render={(routeProps) => <NewComponent {...routeProps}
+            data={this.state.formData}
+            specs={this.state.specs}
+            handleSubmit={this.handleSubmit.bind(this)}
+            handlePost={this.handlePost.bind(this)}
+            getValues={this.getValues.bind(this)} />} />
+          <Route path="/about" component={Report} />
         </BrowserRouter>
       );
     }
