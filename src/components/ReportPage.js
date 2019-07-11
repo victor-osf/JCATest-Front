@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import httpService from '../service/http-service';
 
-export default class Report extends Component {
+export default class ReportPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
