@@ -204,3 +204,7 @@ h6{
 .botoes{
   margin-top: 15px;
 }
+
+.custom-checkbox > .custom-control-label {
+  font-size: 13px
+}

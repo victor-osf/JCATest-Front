@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import httpService from '../service/http-service';
 
-const httpService = require('./service/http-service');
-export default class Report extends Component {
+export default class ReportPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -10,16 +10,14 @@ export default class Report extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     var innerScript = document.createElement("script");
     innerScript.type = "text/javascript";
     innerScript.innerHTML = scriptString;
     document.head.appendChild(innerScript)
 
-    axios.get(httpService.url + '/report')
-      .then(response => {
-        this.setState({ reportHTML: response.data })
-      })
+    let response = await axios.get(httpService.url + '/test/report', httpService.config)
+    this.setState({ reportHTML: response.data })
   }
 
   render() {
