@@ -16,14 +16,14 @@ export default class HomePage extends Component {
   }
 
   async componentDidMount() {
-    // let response1 = await axios.get(httpService.url + '/property/default')
-    // let response2 = await axios.get(httpService.url + '/spec')
-    // this.setState({ formData: response1.data, specs: response2.data })
+    let response1 = await axios.get(httpService.url + '/property/default', httpService.config)
+    let response2 = await axios.get(httpService.url + '/spec', httpService.config)
+    this.setState({ formData: response1.data, specs: response2.data })
   }
 
   async handlePost(event) {
     event.preventDefault();
-    let response = await axios.post(httpService.url + '/test/run')
+    let response = await axios.post(httpService.url + '/test/run', null, httpService.config)
     this.setState(response.data)
   }
 
@@ -43,10 +43,10 @@ export default class HomePage extends Component {
     this.setState({ specs: JSON.parse(values) });
   }
 
-  async handleSubmit(event, form) {
+  async handleSubmit(event) {
     event.preventDefault();
     const data = event.target
-    const id = form.props.id
+    const id = this.state.formData._id
     const body = {
       baseUrl: data.baseUrl.value,
       userCPF: data.userCPF.value,
@@ -92,7 +92,8 @@ export default class HomePage extends Component {
       country: data.country.value
     }
 
-    await axios.put(httpService.url + '/property/' + id, body)
+    await axios.put(httpService.url + `/property/${id}`, body, httpService.config)
+    alert('Salvo com sucesso!')
   }
 
   isEmpty(obj) {
@@ -101,7 +102,7 @@ export default class HomePage extends Component {
 
   async handleChange(event) {
     const { id, checked } = event.target
-    await axios.put(httpService.url + '/spec/' + id, { enabled: checked })
+    await axios.put(httpService.url + `/spec/${id}`, { enabled: checked }, httpService.config)
   }
 
   render() {
@@ -111,9 +112,11 @@ export default class HomePage extends Component {
       checkboxes[i].addEventListener('click', this.props.getValues, false);
     }
     //fim
-    let specs = this.props.specs
 
-    if (this.state.formData.customProperties && this.state.specs) {
+    const specs = this.state.specs
+    const customProperties = this.state.formData.customProperties
+
+    if (customProperties && specs) {
       return (
         <div>
           <div className="container">
@@ -125,61 +128,14 @@ export default class HomePage extends Component {
                                     ou altere os campos desejados, pressione o botão "Salvar" e em seguida "Testar".
         </p>
             </div>
-            <form className="needs-validation" noValidate onSubmit={(e) => this.props.handleSubmit(e, this)}>
+            <form className="needs-validation" noValidate onSubmit={(e) => this.handleSubmit(e)}>
               <div className="row">
                 <div className="col-md-4 order-md-2 mb-4">
                   <h4 className="d-flex justify-content-between align-items-center mb-3">
                     <span className="text-muted">URL Base</span>
                   </h4>
                   <label htmlFor="baseUrl">Url do ambiente a ser testado</label>
-                  <input type="text" className="form-control" id="baseUrl" defaultValue={this.props.data.baseUrl} />
-                  {/*<ul className="list-group mb-3">
-                <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div className="custom-control custom-radio">
-                  <h6>
-                    <input id="cometa" name="baseUrl" type="radio" className="custom-control-input" checked="cometa" defaultChecked  />
-                    <label className="custom-control-label" htmlFor="cometa">Cometa</label>
-                  </h6>
-                    <input type="text" className="form-control" if  disabled defaultValue="http://jca.ifactory.com.br/content/jca/cometa/en.html"></input>
-                </div>
-            </li>
-            <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div className="custom-control custom-radio">
-                  <h6>
-                    <input id="rapido" name="baseUrl" type="radio" className="custom-control-input"  />
-                    <label className="custom-control-label" htmlFor="rapido">Rápido Ribeirão</label>
-                  </h6>
-                  <small className="text-muted">http://jca.ifactory.com.br/content/jca/rapido-ribeirao/en.html</small>
-                </div>
-            </li>
-            <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div className="custom-control custom-radio">
-                  <h6>
-                    <input id="catarinense" name="baseUrl" type="radio" className="custom-control-input"  />
-                    <label className="custom-control-label" htmlFor="catarinense">Catarinense</label>
-                  </h6>
-                  <small className="text-muted list-group">http://jca.ifactory.com.br/content/jca/catarinense/en.html</small>
-                </div>
-            </li>
-            <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div className="custom-control custom-radio">
-                  <h6>
-                    <input id="1001" name="baseUrl" type="radio" className="custom-control-input"  />
-                    <label className="custom-control-label" htmlFor="1001">1001</label>
-                  </h6>
-                  <small className="text-muted">http://jca.ifactory.com.br/content/jca/viacao1001/en.html</small>
-                </div>
-            </li>
-            <li className="list-group-item d-flex justify-content-between lh-condensed">
-                <div className="custom-control custom-radio">
-                  <h6>
-                    <input id="expresso" name="baseUrl" type="radio" className="custom-control-input"  />
-                    <label className="custom-control-label" htmlFor="expresso">Expresso do Sul</label>
-                  </h6>
-                  <small className="text-muted">http://jca.ifactory.com.br/content/jca/expresso-sul/en.html</small>
-                </div>
-            </li>
-          </ul>*/}
+                  <input type="text" className="form-control" id="baseUrl" defaultValue={customProperties.baseUrl} />
                   <hr className="sm-1"></hr>
                   <h4 className="d-flex justify-content-between align-items-center mb-3">
                     <span className="text-muted">Seleção de Testes</span>
@@ -201,7 +157,7 @@ export default class HomePage extends Component {
                         <button className="btn btn-primary btn-block" type="submit">Salvar</button>
                       </div>
                       <div className="col">
-                        <button className="btn btn-success btn-block" type="button" onClick={this.props.handlePost}>Testar</button>
+                        <button className="btn btn-success btn-block" type="button" onClick={this.handlePost.bind(this)}>Testar</button>
                       </div>
                     </div>
                   </div>
@@ -221,61 +177,61 @@ export default class HomePage extends Component {
 
                   <h4 className="mb-3">Dados de Login</h4>
                   <div className="row">
-                    <InputField label="CPF do usuário" id="userCPF" defaultValue={this.props.data.userCPF} />
-                    <InputField label="Senha login CPF" id="passCPF" defaultValue={this.props.data.passCPF} />
-                    <InputField label="CNPJ do usuário" id="userCNPJ" defaultValue={this.props.data.userCNPJ} />
-                    <InputField label="Senha login CNPJ" id="passCNPJ" defaultValue={this.props.data.passCNPJ} />
-                    <InputField label="Passaporte do usuário" id="userPassport" defaultValue={this.props.data.userPassport} />
-                    <InputField label="Senha login Passaporte" id="passPassport" defaultValue={this.props.data.passPassport} />
-                    <InputField label="CPF inválido" id="userCPFWrong" defaultValue={this.props.data.userCPFWrong} />
-                    {/* <InputField label="Email de login do usuário" id="username" isEmail={true} defaultValue={this.props.data.username}/> */}
+                    <InputField label="CPF do usuário" id="userCPF" defaultValue={customProperties.userCPF} />
+                    <InputField label="Senha login CPF" id="passCPF" defaultValue={customProperties.passCPF} />
+                    <InputField label="CNPJ do usuário" id="userCNPJ" defaultValue={customProperties.userCNPJ} />
+                    <InputField label="Senha login CNPJ" id="passCNPJ" defaultValue={customProperties.passCNPJ} />
+                    <InputField label="Passaporte do usuário" id="userPassport" defaultValue={customProperties.userPassport} />
+                    <InputField label="Senha login Passaporte" id="passPassport" defaultValue={customProperties.passPassport} />
+                    <InputField label="CPF inválido" id="userCPFWrong" defaultValue={customProperties.userCPFWrong} />
+                    {/* <InputField label="Email de login do usuário" id="username" isEmail={true} defaultValue={customProperties.username}/> */}
                   </div>
 
                   <h4 className="mb-3">Dados de passageiros</h4>
                   <div className="row">
-                    <InputField label="Passageiro 1" id="passenger1" defaultValue={this.props.data.passenger1} />
-                    <InputField label="Documento do passageiro 1" id="docPassenger1" defaultValue={this.props.data.docPassenger1} />
-                    <InputField label="Passageiro 2" id="passenger2" defaultValue={this.props.data.passenger2} />
-                    <InputField label="Documento do passageiro 2" id="docPassenger2" defaultValue={this.props.data.docPassenger2} />
-                    <InputField label="Passageiro 3" id="passenger3" defaultValue={this.props.data.passenger3} />
-                    <InputField label="Documento do passageiro 3" id="docPassenger3" defaultValue={this.props.data.docPassenger3} />
-                    <InputField label="Passageiro 4" id="passenger4" defaultValue={this.props.data.passenger4} />
-                    <InputField label="Documento do passageiro 4" id="docPassenger4" defaultValue={this.props.data.docPassenger4} />
-                    <InputField label="Passageiro 5" id="passenger5" defaultValue={this.props.data.passenger5} />
-                    <InputField label="Documento do passageiro 5" id="docPassenger5" defaultValue={this.props.data.docPassenger5} />
-                    <InputField label="Passageiro 6" id="passenger6" defaultValue={this.props.data.passenger6} />
-                    <InputField label="Documento do passageiro 6" id="docPassenger6" defaultValue={this.props.data.docPassenger6} />
-                    <InputField label="CPF do estudante" id="studentCpf" defaultValue={this.props.data.studentCpf} />
+                    <InputField label="Passageiro 1" id="passenger1" defaultValue={customProperties.passenger1} />
+                    <InputField label="Documento do passageiro 1" id="docPassenger1" defaultValue={customProperties.docPassenger1} />
+                    <InputField label="Passageiro 2" id="passenger2" defaultValue={customProperties.passenger2} />
+                    <InputField label="Documento do passageiro 2" id="docPassenger2" defaultValue={customProperties.docPassenger2} />
+                    <InputField label="Passageiro 3" id="passenger3" defaultValue={customProperties.passenger3} />
+                    <InputField label="Documento do passageiro 3" id="docPassenger3" defaultValue={customProperties.docPassenger3} />
+                    <InputField label="Passageiro 4" id="passenger4" defaultValue={customProperties.passenger4} />
+                    <InputField label="Documento do passageiro 4" id="docPassenger4" defaultValue={customProperties.docPassenger4} />
+                    <InputField label="Passageiro 5" id="passenger5" defaultValue={customProperties.passenger5} />
+                    <InputField label="Documento do passageiro 5" id="docPassenger5" defaultValue={customProperties.docPassenger5} />
+                    <InputField label="Passageiro 6" id="passenger6" defaultValue={customProperties.passenger6} />
+                    <InputField label="Documento do passageiro 6" id="docPassenger6" defaultValue={customProperties.docPassenger6} />
+                    <InputField label="CPF do estudante" id="studentCpf" defaultValue={customProperties.studentCpf} />
                   </div>
                   <h4 className="mb-3">Dados do cartão de crédito</h4>
                   <div className="row">
-                    <InputField label="Número do cartão de crédito" id="numCard" defaultValue={this.props.data.numCard} />
-                    <InputField label="Data de validade" colSize='4' id="valDate" defaultValue={this.props.data.valDate} />
-                    <InputField label="Código" colSize='3' id="codCard" defaultValue={this.props.data.codCard} />
+                    <InputField label="Número do cartão de crédito" id="numCard" defaultValue={customProperties.numCard} />
+                    <InputField label="Data de validade" colSize='4' id="valDate" defaultValue={customProperties.valDate} />
+                    <InputField label="Código" colSize='3' id="codCard" defaultValue={customProperties.codCard} />
                   </div>
                   <h4 className="mb-3">Dados do usuário</h4>
                   <div className="row">
-                    <InputField label="Nome" id="name" defaultValue={this.props.data.name} />
-                    <InputField label="Data de nascimento" id="birth" defaultValue={this.props.data.birth} />
-                    <InputField label="CPF" id="cpf" defaultValue={this.props.data.cpf} />
-                    <InputField label="CNPJ" id="cnpj" defaultValue={this.props.data.cnpj} />
-                    <InputField label="Passaporte" id="passport" defaultValue={this.props.data.passport} />
-                    <InputField label="Email cadastro CPF" id="emailCpf" isEmail={true} defaultValue={this.props.data.emailCpf} />
-                    <InputField label="Email cadastro CNPJ" id="emailCnpj" isEmail={true} defaultValue={this.props.data.emailCnpj} />
-                    <InputField label="Email cadastro PASSAPORTE" id="emailPass" isEmail={true} defaultValue={this.props.data.emailPass} />
-                    <InputField label="Senha" id="pass" defaultValue={this.props.data.pass} />
-                    <InputField label="DDD" id="ddd" colSize='2' defaultValue={this.props.data.ddd} />
-                    <InputField label="Telefone" id="phoneNumber" colSize='4' defaultValue={this.props.data.phoneNumber} />
+                    <InputField label="Nome" id="name" defaultValue={customProperties.name} />
+                    <InputField label="Data de nascimento" id="birth" defaultValue={customProperties.birth} />
+                    <InputField label="CPF" id="cpf" defaultValue={customProperties.cpf} />
+                    <InputField label="CNPJ" id="cnpj" defaultValue={customProperties.cnpj} />
+                    <InputField label="Passaporte" id="passport" defaultValue={customProperties.passport} />
+                    <InputField label="Email cadastro CPF" id="emailCpf" isEmail={true} defaultValue={customProperties.emailCpf} />
+                    <InputField label="Email cadastro CNPJ" id="emailCnpj" isEmail={true} defaultValue={customProperties.emailCnpj} />
+                    <InputField label="Email cadastro PASSAPORTE" id="emailPass" isEmail={true} defaultValue={customProperties.emailPass} />
+                    <InputField label="Senha" id="pass" defaultValue={customProperties.pass} />
+                    <InputField label="DDD" id="ddd" colSize='2' defaultValue={customProperties.ddd} />
+                    <InputField label="Telefone" id="phoneNumber" colSize='4' defaultValue={customProperties.phoneNumber} />
                   </div>
                   <h4 className="mb-3">Dados de endereço</h4>
                   <div className="row">
-                    <InputField label="Endereço" id="address" defaultValue={this.props.data.address} />
-                    <InputField label="Número" id="number" colSize='2' defaultValue={this.props.data.number} />
-                    <InputField label="CEP" id="zip" colSize='4' defaultValue={this.props.data.zip} />
-                    <InputField label="Complemento" id="complement" defaultValue={this.props.data.complement} />
-                    <InputField label="Bairro" id="neigh" defaultValue={this.props.data.neigh} />
-                    <InputField label="Cidade" id="city" defaultValue={this.props.data.city} />
-                    <InputField label="País" id="country" defaultValue={this.props.data.country} />
+                    <InputField label="Endereço" id="address" defaultValue={customProperties.address} />
+                    <InputField label="Número" id="number" colSize='2' defaultValue={customProperties.number} />
+                    <InputField label="CEP" id="zip" colSize='4' defaultValue={customProperties.zip} />
+                    <InputField label="Complemento" id="complement" defaultValue={customProperties.complement} />
+                    <InputField label="Bairro" id="neigh" defaultValue={customProperties.neigh} />
+                    <InputField label="Cidade" id="city" defaultValue={customProperties.city} />
+                    <InputField label="País" id="country" defaultValue={customProperties.country} />
                   </div>
                 </div>
               </div>

@@ -16,7 +16,7 @@ export default class ReportPage extends Component {
     innerScript.innerHTML = scriptString;
     document.head.appendChild(innerScript)
 
-    let response = await axios.get(httpService.url + '/report')
+    let response = await axios.get(httpService.url + '/test/report', httpService.config)
     this.setState({ reportHTML: response.data })
   }
 

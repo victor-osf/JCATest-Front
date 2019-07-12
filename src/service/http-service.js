@@ -1,3 +1,9 @@
-const API_URL = 'http://localhost:8000';
+const url = 'http://localhost:8000';
 
-exports.url = API_URL
+const config = {
+  headers: {
+    Authorization: "Basic " + btoa("jca:jca")
+  }
+}
+
+export default { url, config }
