@@ -14,6 +14,7 @@ axios.interceptors.request.use(async (request) => {
   _requests++;
   return Promise.resolve(request);
 }, (error) => {
+  hide(loader)
   return Promise.reject(error);
 });
 
@@ -27,5 +28,6 @@ axios.interceptors.response.use((response) => {
 
   return Promise.resolve(response);
 }, (error) => {
+  hide(loader)
   return Promise.reject(error);
 });
