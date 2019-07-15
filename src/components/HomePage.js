@@ -93,7 +93,6 @@ export default class HomePage extends Component {
     }
 
     await axios.put(httpService.url + `/property/${id}`, body, httpService.config)
-    alert('Salvo com sucesso!')
   }
 
   isEmpty(obj) {
